@@ -13,7 +13,7 @@ class Asistente {
 
   method montoaPagar(unaEntrada){
     if(tipoDeAbono == "vip"){
-      return unaEntrada.precioFinal() * (descuento/100)
+      return unaEntrada.precioFinal() * ((100 - descuento) / 100)
     }
     
     else {
@@ -39,6 +39,11 @@ class Asistente {
     entradasObtenidas.map({unaEntrada => unaEntrada.precioFinal()}).sum()
   }
   method cantidadDeEntradasCompradas()=entradasObtenidas.size()
+   method bonificar() {
+    if(tipoDeAbono == "vip"){
+      descuento = descuento + 1
+    }
+  }
   
 }
 
@@ -95,4 +100,5 @@ object productora {
   method bandaMasPopular(){
     return todasLasBandas.max({unaBanda => todasLasBandas.occurrencesOf(unaBanda)}) 
   }
+ 
 }
